@@ -98,6 +98,11 @@ gcc file.c
 # Run
 ./a.out
 
+#Compile C++ program
+g++ file.cpp
+# Run
+./a.out
+
 # Run Shell program
 bash file.sh
 # Or
