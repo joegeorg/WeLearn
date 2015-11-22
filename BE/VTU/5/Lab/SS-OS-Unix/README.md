@@ -100,4 +100,6 @@ gcc file.c
 
 # Run Shell program
 bash file.sh
+# Or
+./file.sh
 ```
