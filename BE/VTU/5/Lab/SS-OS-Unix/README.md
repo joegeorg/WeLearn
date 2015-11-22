@@ -98,10 +98,15 @@ gcc file.c
 # Run
 ./a.out
 
+# Compile C program uses omp module
+gcc -fopenmp file.c
+# Run
+./a.out
+
 #Compile C++ program
 g++ file.cpp
 # Run
-./a.out
+./a.out 
 
 # Run Shell program
 bash file.sh
