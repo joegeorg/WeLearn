@@ -29,7 +29,7 @@ Design, develop, and execute the following programs using YACC:
 
 		b) Program to recognize strings ‘aaab’, ‘abbb’, ‘ab’ and ‘a’ using the grammar (a n b n , n>= 0).
 
-	6 Program to recognize the grammar (a n b, n>= 10).
+	6	Program to recognize the grammar (a n b, n>= 10).
 
 **PART B**
 *UNIX Programming:*
@@ -61,7 +61,7 @@ Design, develop, and execute the following programs:
 		b) C program to do the following: Using fork( ) create a child process.
 		The child process prints its own process-id and id of its parent and then exits.
 		The parent process waits for its child to finish (by executing the wait( ))
-		and prints its own process-id and the id of its child process and then exits. 
+		and prints its own process-id and the id of its child process and then exits.
 
 	10	Design, develop and execute a program in C / C++ to simulate the working of 
 	Shortest Remaining Time and Round-Robin Scheduling Algorithms.
@@ -76,3 +76,28 @@ Design, develop, and execute the following programs:
 
 	12	Design, develop and run a program to implement the Banker’s Algorithm. 
 	Demonstrate its working with different data values.
+
+#### How to compile and run ####
+
+```bash
+# Compile Lex program
+lex file.l
+gcc lex.yy.c -ll
+# Run
+./a.out
+
+# Compile Lex and Yacc program
+lex file.l
+yacc -d file.y
+gcc lex.yy.c y.tab.c -ll
+# Run
+./a.out
+
+# Compile C program
+gcc file.c
+# Run
+./a.out
+
+# Run Shell program
+bash file.sh
+```
