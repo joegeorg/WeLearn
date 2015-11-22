@@ -12,7 +12,7 @@ main(int argc,char *argv[])
 yyin=fopen(argv[1],"r");
 yyout=fopen(argv[2],"w");
 yylex();
-printf("no.of comment lines1(//)=%d\n",comment1);
-printf("no.of comment lines2(/*)=%d\n",comment2);
+printf("No of comment lines1(//)=%d\n",comment1);
+printf("No of comment lines2(/*)=%d\n",comment2);
 }
 

@@ -11,8 +11,8 @@ main(int argc,char *argv[])
 {
         yyin=fopen(argv[1],"r");
         yylex();
-        printf("No.of characters=%d\n",ch);
-        printf("No.of words=%d\n",w);
-        printf("No.of lines=%d\n",l);
-        printf("No.of spaces=%d\n",sp);
+        printf("No of characters=%d\n",ch);
+        printf("No of words=%d\n",w);
+        printf("No of lines=%d\n",l);
+        printf("No of spaces=%d\n",sp);
 }
