@@ -1,5 +1,5 @@
 # SYSTEM SOFTWARE & OPERATING SYSTEMS LABORATORY
-> Subject Code 10CSL58
+> Subject Code : 10CSL58
 
 **Part A**
 *LEX and YACC Programs:*
@@ -63,16 +63,16 @@ Design, develop, and execute the following programs:
 		The parent process waits for its child to finish (by executing the wait( ))
 		and prints its own process-id and the id of its child process and then exits. 
 
-	10 Design, develop and execute a program in C / C++ to simulate the working of 
+	10	Design, develop and execute a program in C / C++ to simulate the working of 
 	Shortest Remaining Time and Round-Robin Scheduling Algorithms.
 	Experiment with different quantum sizes for the Round- Robin algorithm.
 	In all cases, determine the average turn-around time.
 	The input can be read from key board or from a file.
 		
-	11 Using OpenMP, Design, develop and run a multi-threaded program
+	11	Using OpenMP, Design, develop and run a multi-threaded program
 	to generate and print Fibonacci Series. One thread has to generate
 	the numbers up to the specified limit and another thread has to print them. 
 	Ensure proper synchronization.
 
-	12 Design, develop and run a program to implement the Banker’s Algorithm. 
+	12	Design, develop and run a program to implement the Banker’s Algorithm. 
 	Demonstrate its working with different data values.
