@@ -15,7 +15,7 @@ int random_num()
 	temp=temp%24;
 	return(temp);
 }
-int main(int args,char * argv[])
+int main()
 {
 	int fibno[100]={0};
 	int i,j,temp,n,tid;
