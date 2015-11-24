@@ -25,10 +25,10 @@ main()
         exit(0);
     }
     printf("\nValid expression:");
-    printf("\nOperators are\n");
+    printf("\nOperands are\n");
     for(temp=0;temp<i;temp++)
         printf("%s\t",a1[temp]);
-    printf("\nOperands are\n");
+    printf("\nOperators are\n");
     for(temp=0;temp<j;temp++)
         printf("%s   ",a2[temp]);
     printf("\n");
