@@ -1,7 +1,7 @@
 # DATABASE APPLICATIONS LABORATORY
 > Subject Code : 10CSL57
 
-	1) Consider the following relations:
+1) Consider the following relations:
 	
 	Student (snum: integer, sname: string, major: string, level: string,
 	age: integer)
@@ -32,7 +32,9 @@
 		enrollment of the courses that they teach is less than five.
 
 
-	2) The following relations keep track of airline flight information:
+
+2) The following relations keep track of airline flight information:
+	
 	Flights (no: integer, from: string, to: string, distance: integer,
 	Departs: time, arrives: time, price: real)
 	Aircraft (aid: integer, aname: string, cruisingrange: integer)
@@ -64,8 +66,8 @@
 		Bengaluru to New Delhi.
 
 
-	3) Consider the following database of student enrollment in courses &
-	books adopted for each course.
+3) Consider the following database of student enrollment in courses & 
+books adopted for each course.
 	
 	STUDENT (regno: string, name: string, major: string, bdate:date)
 	COURSE (course #:int, cname:string, dept:string)
@@ -93,7 +95,7 @@
 		vii) Create suitable front end for querying and displaying the results.
 
 
-	4) The following tables are maintained by a book dealer.
+4) The following tables are maintained by a book dealer.
 	
 	AUTHOR (author-id:int, name:string, city:string, country:string)
 	PUBLISHER (publisher-id:int, name:string, city:string, country:string)
@@ -123,7 +125,7 @@
 		results.
 
 
-	5) Consider the following database for a banking enterprise
+5) Consider the following database for a banking enterprise
 	
 	BRANCH(branch-name:string, branch-city:string, assets:real)
 	ACCOUNT(accno:int, branch-name:string, balance:real)
