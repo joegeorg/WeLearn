@@ -4,7 +4,7 @@
 %}
 %token A B
 %%
-exp:A|B|A B
+exp:A|A B
 %%
 main()
 {
