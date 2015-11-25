@@ -1,10 +1,10 @@
 #include<stdio.h>
-#include<sys/types.h>
+
 main()
 {
     char cmd[10];
     int ch;
-    pid_t pid;
+    int pid;
     pid=fork();
     if(pid==0)
     {
