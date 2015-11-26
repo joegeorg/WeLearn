@@ -80,10 +80,9 @@ v) Find the names of faculty members for whom the combined enrollment of the cou
 */
 
 SELECT DISTINCT F.FNAME
-	FROM FACULTY F
-	WHERE 5 >
-    (SELECT COUNT(E.SNUM)
-		FROM CLASS C,
-			ENROLLED E
-		WHERE C.NAME = E.CNAME
-       	AND C.FID = F.FID);
+	FROM FACULTY F,
+		CLASS C,
+		ENROLLED E
+	WHERE C.NAME = E.CNAME
+    AND C.FID = F.FID
+    	GROUP BY F.FNAME HAVING COUNT(*) < 5;
