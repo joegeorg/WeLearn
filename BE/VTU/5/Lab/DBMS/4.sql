@@ -27,7 +27,7 @@ SELECT A.ANAME
 		(SELECT AVG(PRICE) 
 			FROM CATALOG) 
 				GROUP BY C.AID 
-				HAVING COUNT(*)>=2;
+				HAVING COUNT(*)>=2);
 
 /*
 iv) Find the author of the book which has maximum sales.
