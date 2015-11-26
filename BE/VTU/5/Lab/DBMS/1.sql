@@ -48,22 +48,14 @@ WHERE C.ROOM = 'R128'
 iii) Find the names of all students who are enrolled in two classes that meet at the same time.
 */
 
-SELECT C.CNO,
-       T.ISBN,
-       T.TITLE
-FROM COURSE C,ADOPT A,TEXT T
-WHERE C.CNO=A.CNO
-	AND C.DEPT='CSE'
-	AND A.ISBN=T.ISBN
-	AND EXISTS
-    (SELECT COUNT(A1.CNO)
-	FROM ADOPT A1
-	WHERE A1.CNO=C.CNO
-	GROUP BY A1.CNO
-	HAVING COUNT(*)>2)
-ORDER BY C.CNO,
-		T.ISBN,
-		T.TITLE;
+SELECT SNAME
+	FROM STUDENT S,
+		CLASS C,
+		ENROLLED E
+	WHERE S.SNUM = E.SNUM
+	AND E.CNAME = C.NAME
+		GROUP BY(S.SNUM,S.SNAME,C.MEETSAT)
+		HAVING COUNT(*)<1;
 
 
 /*
@@ -78,6 +70,7 @@ GROUP BY C.FID
 HAVING COUNT(DISTINCT ROOM) =
   (SELECT COUNT(DISTINCT ROOM)
    FROM CLASS);
+
 
 /*
 v) Find the names of faculty members for whom the combined enrollment of the courses that they teach is less than five.
