@@ -46,18 +46,14 @@ void draw_cylinder()
 		draw_circle(x,y+i,r);
 }
 
-void quadrilateral(int x1,int y1,int x2,int y2)
+void draw_quadrilateral(int x1,int y1,int x2,int y2)
 {
 	glColor3f(1.0,0.0,0.5);
-	glPointSize(2.0);
 	glBegin(GL_LINE_LOOP);
-	
 	glVertex2i(x1,y1);
 	glVertex2i(x1,y2);
 	glVertex2i(x2,y2);
 	glVertex2i(x2,y1);
-
-	
 	glEnd();
 }
 
@@ -66,22 +62,19 @@ void draw_parallelepiped()
 	int x1=200,y1=100,x2=300,y2=200;
 	int i;
 	for(i=0;i<40;i+=2)
-		quadrilateral(x1+i,y1+i,x2+i,y2+i);
-		
+		draw_quadrilateral(x1+i,y1+i,x2+i,y2+i);	
 }
 
 void myinit()
 {
 	glClearColor(1.0,1.0,1.0,1.0);
 	glPointSize(2.0);
-	
 	gluOrtho2D(0,499,0,499);
 }
 
 void display()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
-
 	draw_cylinder();
 	draw_parallelepiped();
 	glFlush();

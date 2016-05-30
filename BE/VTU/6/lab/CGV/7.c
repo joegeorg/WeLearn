@@ -1,8 +1,9 @@
 #include<GL/glut.h>
+
 void wall(double thick)
 {
 	glPushMatrix();
-		glTranslated(0.5,.5*thick,.5);
+	glTranslated(0.5,.5*thick,.5);
 	glScaled(1,thick,1);
 	glutSolidCube(1.0);
 	glPopMatrix();
@@ -11,37 +12,40 @@ void wall(double thick)
 void tableleg(double thick,double len)
 {
 	glPushMatrix();
-		glTranslated(0,.5*len,0);
+	glTranslated(0,.5*len,0);
 	glScaled(thick,len,thick);
 	glutSolidCube(1.0);
 	glPopMatrix();
 }
-void table(double topwid,double topthick,double legthick,double leglen)
+
+void table(double topwid, double topthick, double legthick, double leglen)
 {
 	
 	glPushMatrix();
-		glTranslated(0,leglen,0);
+	glTranslated(0,leglen,0);
 	glScaled(topwid,topthick,topwid);
 	glutSolidCube(1.0);
 	glPopMatrix();
 
 	double dist=0.95*topwid/2-legthick/2;
 	glPushMatrix();
-		glTranslated(dist,0,dist);
-		tableleg(legthick,leglen);
-		glTranslated(0,0,-2*dist);
-		tableleg(legthick,leglen);
-		glTranslated(-2*dist,0,2*dist);
-		tableleg(legthick,leglen);
-		glTranslated(0,0,-2*dist);
-		tableleg(legthick,leglen);
-		glPopMatrix();
+	glTranslated(dist,0,dist);
+	tableleg(legthick,leglen);
+	glTranslated(0,0,-2*dist);
+	tableleg(legthick,leglen);
+	glTranslated(-2*dist,0,2*dist);
+	tableleg(legthick,leglen);
+	glTranslated(0,0,-2*dist);
+	tableleg(legthick,leglen);
+	glPopMatrix();
 
 }
 
 void display()
 {
+	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	glClearColor(0,1,0,0);
+	
 	GLfloat mat_ambient[]={.7,.7,.7,1};
 	GLfloat mat_diffuse[]={.5,.5,.5,1};
 	GLfloat mat_specular[]={1,1,1,1};
@@ -66,9 +70,7 @@ void display()
 	glLoadIdentity();
 
 	gluLookAt(2.3,1.3,2,0,0.25,0,0,1,0);
-	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	
-
 	glPushMatrix();
 	glTranslated(0.6,.38,.5);
 	glRotated(30,0,1,0);
@@ -84,13 +86,14 @@ void display()
 
 	glPushMatrix();
 	glRotated(90,0,0,1);
-	wall(.02);
+	wall(0.02);
 	glPopMatrix();
 
 	glPushMatrix();
 	glRotated(-90,1,0,0);
 	wall(0.02);
 	glPopMatrix();
+	
 	glFlush();
 }
 

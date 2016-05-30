@@ -9,9 +9,9 @@ void myinit()
 {
 	glClearColor(1.0,1.0,1.0,1.0);
 	glPointSize(5.0);
-	
 	gluOrtho2D(0,499,0,499);
 }
+
 void display()
 {
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
@@ -20,12 +20,9 @@ void display()
 		x[i]=x0+i*dx;
 	for(j=0;j<maxy;j++)
 		y[j]=y0+j*dy;
-
-	
 	for(i=0;i<maxx-1;i++)
 		for(j=0;j<maxy-1;j++)
 		{
-			
 			glBegin(GL_LINE_LOOP);
 			glVertex2f(x[i],y[j]);
 			glVertex2f(x[i],y[j+1]);
@@ -46,5 +43,3 @@ void main(int argc,char **argv)
 	myinit();
 	glutMainLoop();
 }
-
-

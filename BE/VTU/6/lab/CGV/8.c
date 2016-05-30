@@ -1,35 +1,29 @@
 #include<GL/glut.h>
 GLfloat v[][3]={{-1,-1,1},{-1,1,1},{1,1,1},{1,-1,1},{-1,-1,-1},{-1,1,-1},{1,1,-1},{1,-1,-1}};
-GLfloat N[][3]={{-1,-1,1},{-1,1,1},{1,1,1},{1,-1,1},{-1,-1,-1},{-1,1,-1},{1,1,-1},{1,-1,-1}};
-GLfloat color[][3]={{0,0,0},{1,0,0},{0,1,0},{0,0,1},{1,1,0},{0,1,1},{1,0,1},{1,1,1}};
-void drawpolygon(int a,int b, int c,int d)
+void drawpolygon(int a, int b, int c, int d)
 {
 	glBegin(GL_POLYGON);
-	glColor3fv(color[a]);
+	glColor3f(1.0,0.0,0.0);
 	glVertex3fv(v[a]);
-	glNormal3fv(N[a]);
-	glColor3fv(color[b]);
+	glColor3f(0.0,1.0,0.0);
 	glVertex3fv(v[b]);
-	glNormal3fv(N[b]);
-	glColor3fv(color[c]);
+	glColor3f(0.0,0.0,1.0);
 	glVertex3fv(v[c]);
-	glNormal3fv(N[c]);
-	glColor3fv(color[d]);
+	glColor3f(1.0,0.0,1.0);
 	glVertex3fv(v[d]);
-	glNormal3fv(N[d]);
 	glEnd();
 }
+
 void colorcube()
 {
 	drawpolygon(0,3,2,1);
-    drawpolygon(2,3,7,6);
+	drawpolygon(2,3,7,6);
 	drawpolygon(0,4,7,3);
+	drawpolygon(0,1,5,4);
 	drawpolygon(1,2,6,5);
 	drawpolygon(4,5,6,7);
-	drawpolygon(0,1,5,4);
-	
-	
 }
+
 static GLfloat theta[]={0,0,0};
 static GLint axis=2;
 static GLdouble viewer[]={0,0,5};
@@ -55,17 +49,21 @@ void mouse(int bt,int st,int x, int y)
 		axis=1;
 	if(bt==GLUT_RIGHT_BUTTON && st==GLUT_DOWN)
 		axis=2;
+}
+
+void spin()
+{
 	theta[axis]+=2;
 	if(theta[axis]>360)
 		theta[axis]-=360;
-	display();
+	glutPostRedisplay();
 }
 void myreshape(int w,int h)
 {
 	glViewport(0,0,w,h);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	if(w>=h)
+	if(w<=h)
 		glFrustum(-2,2,-2*(GLfloat)h/(GLfloat)w,2*(GLfloat)h/(GLfloat)w,2,20);
 	else
 		glFrustum(-2,2,-2*(GLfloat)w/(GLfloat)h,2*(GLfloat)w/(GLfloat)h,2,20);
@@ -80,9 +78,8 @@ void keys(unsigned char key,int x, int y)
 	if(key=='Y') viewer[1]+=1;
 	if(key=='z') viewer[2]-=1;
 	if(key=='Z') viewer[2]+=1;
-	display();
+	display();	
 }
-
 void main(int argc,char **argv)
 {
 	glutInit(&argc,argv);
@@ -94,8 +91,6 @@ void main(int argc,char **argv)
 	glutReshapeFunc(myreshape);
 	glutMouseFunc(mouse);
 	glutKeyboardFunc(keys);
+	glutIdleFunc(spin);
 	glutMainLoop();
 }
-
-
-

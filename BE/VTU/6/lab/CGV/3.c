@@ -1,29 +1,27 @@
 #include<GL/glut.h>
 GLfloat v[][3]={{-1,-1,1},{-1,1,1},{1,1,1},{1,-1,1},{-1,-1,-1},{-1,1,-1},{1,1,-1},{1,-1,-1}};
-void draw(int a,int b,int c, int d)
+void draw_polygon(int a,int b,int c, int d)
 {
 	glBegin(GL_POLYGON);
+	glColor3f(1.0,0.0,0.0);
 	glVertex3fv(v[a]);
+	glColor3f(0.0,1.0,0.0);
 	glVertex3fv(v[b]);
+	glColor3f(0.0,0.0,1.0);
 	glVertex3fv(v[c]);
+	glColor3f(1.0,0.0,1.0);
 	glVertex3fv(v[d]);
 	glEnd();
 }
 
 void colorcube()
 {
-	glColor3f(0.0,0.0,1.0);
-	draw(0,3,2,1);
-	glColor3f(0.0,1.0,0.0);
-	draw(0,4,7,3);
-	glColor3f(1.0,0.0,0.0);
-	draw(1,2,6,5);
-	glColor3f(1.0,0.0,1.0);
-	draw(3,7,6,2);
-	glColor3f(0.0,0.5,0.2);
-	draw(4,5,6,7);
-	glColor3f(0.5,0.3,0.0);
-	draw(0,1,5,4);
+	draw_polygon(0,3,2,1);
+	draw_polygon(0,4,7,3);
+	draw_polygon(1,2,6,5);
+	draw_polygon(3,7,6,2);
+	draw_polygon(4,5,6,7);
+	draw_polygon(0,1,5,4);
 }
 
 static GLfloat theta[]={0,0,0};
@@ -56,7 +54,6 @@ void myreshape(int w,int h)
 		glOrtho(-2,2,-2*(GLfloat)h/(GLfloat)w,2*(GLfloat)h/(GLfloat)w,-10,10);
 	else
 		glOrtho(-2,2,-2*(GLfloat)w/(GLfloat)h,2*(GLfloat)w/(GLfloat)h,-10,10);
-
 	glMatrixMode(GL_MODELVIEW);
 	glutPostRedisplay();
 }

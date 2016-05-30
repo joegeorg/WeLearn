@@ -1,5 +1,4 @@
 #include<GL/glut.h>
-
 void edgedetect(float x1,float y1,float x2,float y2,int *le,int *re)
 {
 	float mx,temp,x;
@@ -22,7 +21,6 @@ void edgedetect(float x1,float y1,float x2,float y2,int *le,int *re)
 			le[i]=(int)x;
 		if(x>(float)re[i])
 			re[i]=(int)x;
-
 		x+=mx;
 	}
 }
@@ -35,7 +33,7 @@ void drawpixel(float x, float y)
 	glEnd();
 }
 
-void scanfil(float x1,float y1,float x2,float y2,float x3,float y3,float x4,float y4)
+void scanfil(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4)
 {
 	int le[500],re[500];
 	int i,j;
@@ -69,6 +67,7 @@ void display()
 	scanfil(x1,y1,x2,y2,x3,y3,x4,y4);
 	glFlush();
 }
+
 void myinit()
 {
 	glClearColor(1.0,1.0,1.0,1.0);
@@ -77,6 +76,7 @@ void myinit()
 	glLoadIdentity();
 	gluOrtho2D(0,499,0,499);
 }
+
 void main(int argc,char **argv)
 {
 	glutInit(&argc,argv);
@@ -85,6 +85,5 @@ void main(int argc,char **argv)
 	glutCreateWindow("scanfil");
 	glutDisplayFunc(display);
 	myinit();
-
 	glutMainLoop();
 }

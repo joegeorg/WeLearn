@@ -2,25 +2,13 @@
 #include<math.h>
 #include<GL/glut.h>
 
-
 GLfloat h=100.0;
 GLfloat k=100.0;
 GLfloat theta;
 
-
-void rotate()
-{
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	glTranslatef(h,k,0.0);
-	glRotatef(theta,0.0,0.0,1.0);
-	glTranslatef(-h,-k,0.0);
-}
-
 void drawhouse()
 {
 	glColor3f(0.0,0.0,1.0);
-
 	glBegin(GL_LINE_LOOP);
 	glVertex2f(100,100);
 	glVertex2f(100,300);
@@ -44,15 +32,23 @@ void drawhouse()
 	glEnd();
 }
 
-
+void rotate()
+{
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	glTranslatef(h,k,0.0);
+	glRotatef(theta,0.0,0.0,1.0);
+	glTranslatef(-h,-k,0.0);
+}
 
 void display()
 {
-glClear(GL_COLOR_BUFFER_BIT);
-drawhouse();
-rotate();
-drawhouse();
-glFlush();
+	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+	drawhouse();
+	rotate();
+	drawhouse();
+	glFlush();
+	glutSwapBuffers();
 }
 
 void myinit()
@@ -78,6 +74,3 @@ void main(int argc, char** argv)
 	myinit();
 	glutMainLoop();
 }
-
-
-
