@@ -17,7 +17,6 @@ int main()
   printf("if(a<b)then(s,a) else (s,b);\n\n");  
   printf("enter the statement\n");  
   scanf("%s",&stmt);  
-  
   stlen=strlen(stmt);  
   counter=counter+2;  
   counter=parsecondition(stmt,counter,strB,stlen);  

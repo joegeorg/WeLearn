@@ -8,6 +8,7 @@ void callme(int sig_no)
 	alarm(INTERVAL);
 	printf("Hello!!\n");
 }
+
 int main()
 {
 	struct sigaction action;
