@@ -93,4 +93,4 @@ postfix[++pptr]=cursymb;
 while(top!=-1)  
 postfix[++pptr]=pop(stack,&top);  
 printf("%s\n",postfix);  
-}  
+}

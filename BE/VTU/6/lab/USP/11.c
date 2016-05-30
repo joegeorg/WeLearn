@@ -64,6 +64,7 @@ int parsecondition(char input[],int cntr , char *dest, int totallen)
   dest[pos]='\0';  
   return cntr;  
 }  
+
 void gen(char B[],char S1[],char S2[],int elsepart)  
 {  
   int Bt=101,Bf=102,Sn=103;  
