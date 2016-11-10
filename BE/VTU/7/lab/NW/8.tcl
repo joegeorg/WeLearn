@@ -1,7 +1,7 @@
 set ns [new Simulator]
-set trf [open 2.tr w]
+set trf [open 8.tr w]
 $ns trace-all $trf
-set namf [open 2.nam w]
+set namf [open 8.nam w]
 $ns namtrace-all $namf
 set n0 [$ns node]
 set n1 [$ns node]

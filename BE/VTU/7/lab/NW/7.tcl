@@ -1,7 +1,7 @@
 set ns [ new Simulator ]
-set trf [open 1.tr w]
+set trf [open 7.tr w]
 $ns trace-all $trf
-set namf [open 1.nam w]
+set namf [open 7.nam w]
 $ns namtrace-all $namf
 set n0 [$ns node]
 set n1 [$ns node]
@@ -23,12 +23,12 @@ $ns connect $udp0 $null0
 $cbr0 set packetSize_ 500
 $cbr0 set interval_ 0.01
 proc finish { } {
-global ns namf trf
-$ns flush-trace
-exec nam 1.nam &
-close $trf
-close $namf
-exit 0
+	global ns namf trf
+	$ns flush-trace
+	exec nam 7.nam &
+	close $trf
+	close $namf
+	exit 0
 }
 $ns at 0.1 "$cbr0 start"
 $ns at 9.5 "$cbr0 stop"
