@@ -3,14 +3,7 @@ set nf [open 9.nam w]
 $ns namtrace-all $nf
 set tf [open 9.tr w]
 $ns trace-all $tf
-proc finish {} {
-	global ns nf tf
-	$ns flush-trace
-	close $nf
-	close $tf
-	exec nam 9.nam &
-	exit 0
-}
+
 set n0 [$ns node]
 set n1 [$ns node]
 set n2 [$ns node]
@@ -59,6 +52,15 @@ $p3 set interval_ 0.001
 $ns connect $p1 $p4
 $ns connect $p2 $p5
 $ns connect $p3 $p6
+
+proc finish {} {
+	global ns nf tf
+	$ns flush-trace
+	close $nf
+	close $tf
+	exec nam 9.nam &
+	exit 0
+}
 
 $ns at 0.1 "$p1 send"
 $ns at 0.2 "$p1 send"
