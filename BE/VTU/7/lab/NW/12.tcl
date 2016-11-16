@@ -41,11 +41,11 @@ $ns at 5 "ftp1 start"
 $ns at 100 "$n1 setdest 550 550 15"
 $ns at 190 "$n1 setdest 70 70 15"
 proc finish {} {
-global ns naf trf
-$ns flush-trace
-close $trf
-close $naf
-exit 0
+	global ns naf trf
+	$ns flush-trace
+	close $trf
+	close $naf
+	exit 0
 }
 $ns at 250 "finish"
 $ns run

@@ -1,4 +1,4 @@
-set ns [ new Simulator ]
+set ns [new Simulator]
 set trf [open 7.tr w]
 $ns trace-all $trf
 set namf [open 7.nam w]
@@ -20,6 +20,7 @@ set udp0 [new Agent/UDP]
 $ns attach-agent $n0 $udp0
 set cbr0 [new Application/Traffic/CBR]
 $cbr0 attach-agent $udp0
+
 set null0 [new Agent/Null]
 $ns attach-agent $n2 $null0
 $udp0 set class_ 1
