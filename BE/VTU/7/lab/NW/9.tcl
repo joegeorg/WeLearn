@@ -21,7 +21,7 @@ $ns duplex-link $n6 $n0 100kb 11ms DropTail
 
 Agent/Ping instproc recv {from  rtt} {
 	$self instvar node_
-	puts "node [$node_ id] recieved pin answer from node
+	puts "node [$node_ id] recieved ping answer from node
 	$from round-trip-time $rtt ms"
 }
 set p1 [new Agent/Ping]

@@ -14,7 +14,7 @@ $ns color 2 "green"
 $n0 label "source1-tcp-ftp"
 $n1 label "source2-udp-cbr"
 $n2 label "Router"
-$n3 label "destination"
+$n3 label "Destination"
 
 $ns duplex-link $n0 $n2 100kb 1ms DropTail
 $ns duplex-link $n1 $n2 100kb 1ms DropTail
