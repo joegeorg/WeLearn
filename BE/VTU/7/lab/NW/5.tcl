@@ -1,14 +1,16 @@
 set ns [new Simulator]
-set trf [open 11.tr w]
+set trf [open 5.tr w]
 $ns trace-all $trf
-set naf [open 11.nam w]
+set naf [open 5.nam w]
 $ns namtrace-all $naf
+
 set n0 [$ns node]
 set n1 [$ns node]
 set n2 [$ns node]
 set n3 [$ns node]
 set n4 [$ns node]
 set n5 [$ns node]
+
 $ns make-lan "$n0 $n1 $n2 $n3 $n4" 100Mb 100ms LL Queue/DropTail Mac/802_3
 $ns duplex-link $n4 $n5 1Mb 1ms DropTail
 set tcp0 [new Agent/TCP]
@@ -36,6 +38,7 @@ $tcp0 set maxcwnd_ 10
 set f2 [open f2.tr w]
 $tcp2 attach $f2
 $tcp2 trace cwnd_
+
 proc finish {} {
 	global naf trf ns
 	$ns flush-trace
@@ -43,12 +46,13 @@ proc finish {} {
 	close $trf
 	exit 0
 }
+
 $ns at 0.1 "$ftp0 start"
 $ns at 5 "$ftp0 stop"
 $ns at 7 "$ftp0 start"
 $ns at 0.2 "$ftp2 start"
-$ns at 8 "ftp2 stop"
-$ns at 14 "ftp0 stop"
+$ns at 8 "$ftp2 stop"
+$ns at 14 "$ftp0 stop"
 $ns at 10 "$ftp2 start"
 $ns at 15 "$ftp2 stop"
 $ns at 16 "finish"

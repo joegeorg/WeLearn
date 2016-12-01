@@ -1,7 +1,7 @@
 set ns [new Simulator]
-set nf [open 9.nam w]
+set nf [open 3.nam w]
 $ns namtrace-all $nf
-set tf [open 9.tr w]
+set tf [open 3.tr w]
 $ns trace-all $tf
 
 set n0 [$ns node]
@@ -58,7 +58,7 @@ proc finish {} {
 	$ns flush-trace
 	close $nf
 	close $tf
-	exec nam 9.nam &
+	exec nam 3.nam &
 	exit 0
 }
 
