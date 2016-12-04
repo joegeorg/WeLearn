@@ -14,9 +14,9 @@ set n6 [$ns node]
 set n7 [$ns node]
 
 $ns make-lan "$n0 $n1 $n2 $n3" 100Mb 300ms LL 
-Queue/DropTail Mac/802_ 3
+Queue/DropTail Mac/802_3
 $ns make-lan "$n4 $n5 $n6 $n7" 100Mb 300ms LL 
-Queue/DropTail Mac/802_ 3
+Queue/DropTail Mac/802_3
 $ns duplex-link $n3 $n4 100Mb 300ms DropTail
 $ns duplex-link-op $n3 $n4 color "green"
 

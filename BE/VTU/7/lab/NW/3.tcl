@@ -1,8 +1,8 @@
 set ns [new Simulator]
-set nf [open 3.nam w]
-$ns namtrace-all $nf
-set tf [open 3.tr w]
-$ns trace-all $tf
+set namf [open 3.nam w]
+$ns namtrace-all $namf
+set trf [open 3.tr w]
+$ns trace-all $trf
 
 set n0 [$ns node]
 set n1 [$ns node]
@@ -24,6 +24,7 @@ Agent/Ping instproc recv {from  rtt} {
 	puts "node [$node_ id] recieved ping answer from node
 	$from round-trip-time $rtt ms"
 }
+
 set p1 [new Agent/Ping]
 set p2 [new Agent/Ping]
 set p3 [new Agent/Ping]
@@ -54,11 +55,11 @@ $ns connect $p2 $p5
 $ns connect $p3 $p6
 
 proc finish {} {
-	global ns nf tf
+	global ns namf trf
 	$ns flush-trace
-	close $nf
-	close $tf
 	exec nam 3.nam &
+	close $namf
+	close $trf
 	exit 0
 }
 
@@ -77,7 +78,6 @@ $ns at 1.3 "$p4 send"
 $ns at 1.4 "$p1 send"
 $ns at 0.6 "$p4 send"
 $ns at 1.5 "$p6 send"
-
 $ns at 2.0 "finish"
 
 $ns run

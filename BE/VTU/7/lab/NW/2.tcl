@@ -11,8 +11,8 @@ set n3 [$ns node]
 
 $ns color 1 "red"
 $ns color 2 "green"
-$n0 label "source1-tcp-ftp"
-$n1 label "source2-udp-cbr"
+$n0 label "Source-1-tcp-ftp"
+$n1 label "Source-2-udp-cbr"
 $n2 label "Router"
 $n3 label "Destination"
 
