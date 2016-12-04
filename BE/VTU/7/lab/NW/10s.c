@@ -1,57 +1,28 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<errno.h>
-#include<sys/types.h>
-#include<fcntl.h>
-#include<sys/stat.h>
-#include<unistd.h>
-#define FIFO1_NAME "fifo1"
-#define FIFO2_NAME "fifo2"
-int main()
-{
-	char p[3000],f[3000],c[3000];
-	int num,num2,f1,fd,fd2;
-	int i=0;
-	char ch;
-	mknod(FIFO1_NAME,S_IFIFO|0666,0);
-	mknod(FIFO2_NAME,S_IFIFO|0666,0);
-	printf("\nServer online\n");
-	fd=open(FIFO1_NAME,O_RDONLY);
-	printf("\nClient online. \n Waiting for the request \n");
-	while(1)
-	{
-		if((num=read(fd,p,3000))==-1)
-			perror("Read error!!!\n");
-		else
-		{
-			p[num]='\0';
-			if((f1=open(p,O_RDONLY))<0)
-			{
-				printf("\nServer:%s not found...\n",p);
-				exit(1);
-			}
-			else
-			{
-				printf("\nServer:%s found \n transfering contents...\n",p);
-				stdin=fdopen(f1,"r");
-				i=0;
-				while(1)
-				{
-					ch=fgetc(stdin);
-					if(ch==EOF)
-						break;
-					else
-						c[i++]=ch;
-				}
-				fd2=open(FIFO2_NAME,O_WRONLY);
-				if(num2=write(fd2,c,strlen(c))==-1)
-					perror("\nTransfer error !\n");
-				else
-					printf("\nServer : Transfer completed\n");
-				exit(1);
-			}
+#include <stdio.h>
+#include <fcntl.h>
+
+int main() {
+	char fname[50], buffer[1025];
+	int request, response, file, n;
+	mkfifo("request.fifo", 0777);
+	mkfifo("response.fifo", 0777);
+	printf("Waiting for request... \n");
+	request = open("request.fifo", O_RDONLY);
+	response = open("response.fifo", O_WRONLY);
+	read(request, fname, sizeof(fname), 0);
+	printf("Received request for %s \n", fname);
+	file = open(fname, O_RDONLY);
+	if(file < 0) {
+		write(response, "File not found. \n", 18, 0);
+	} else {
+		while((n = read(file, buffer, sizeof(buffer), 0)) > 0) {
+			write(response, buffer, n, 0);
 		}
 	}
-	return 1;
+	printf("Response sent. \n");
+	close(request);
+	close(response);
+	unlink("request.fifo");
+	unlink("response.fifo");
+	return 0;
 }
