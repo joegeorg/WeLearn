@@ -9,40 +9,40 @@ int main()
         psz[i]=r*6;
     }
     for(i=0;i<5;i++)
-        printf("\n enter the packet size[%d]:%d\n",i,psz[i]);
-    printf("\n enter the output rate/buffer\n:");
+        printf("\nEnter the packet size[%d]:%d\n",i,psz[i]);
+    printf("\nEnter the output rate/buffer\n:");
     scanf("%d %d",&ort,&bsz);
     for(i=0;i<5;i++)
     {
         if((psz[i]+prm)>bsz)
         {
-            printf("bucket size is not enough\n");
+            printf("Bucket size is not enough\n");
         }
         else
         {
             prm=prm+psz[i];
-            printf("\n psize %d\n",psz[i]);
-            printf("transmission %d\n",prm);
+            printf("\nPsize %d\n",psz[i]);
+            printf("Transmission %d\n",prm);
             while(1)
             {
                 if(prm)
                 {
                     if(prm<ort)
                     {
-                        printf("\n transmission done\n");
+                        printf("\nTransmission done\n");
                         prm=0;
                         break;
                     }
                     else
                     {
-                        printf("size of packet %d transmitted\n",ort);
+                        printf("Size of packet %d transmitted\n",ort);
                         prm-=ort;
-                        printf("remaining size:%d",prm);
+                        printf("Remaining size:%d",prm);
                     }
                 }
                 else
                 {
-                    printf("no packets remaining\n");
+                    printf("No packets remaining\n");
                     break;
                 }
             }

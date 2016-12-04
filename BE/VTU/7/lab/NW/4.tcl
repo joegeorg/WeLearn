@@ -13,10 +13,8 @@ set n5 [$ns node]
 set n6 [$ns node]
 set n7 [$ns node]
 
-$ns make-lan "$n0 $n1 $n2 $n3" 100Mb 300ms LL 
-Queue/DropTail Mac/802_3
-$ns make-lan "$n4 $n5 $n6 $n7" 100Mb 300ms LL 
-Queue/DropTail Mac/802_3
+$ns make-lan "$n0 $n1 $n2 $n3" 100Mb 300ms LL Queue/DropTail Mac/802_3
+$ns make-lan "$n4 $n5 $n6 $n7" 100Mb 300ms LL Queue/DropTail Mac/802_3
 $ns duplex-link $n3 $n4 100Mb 300ms DropTail
 $ns duplex-link-op $n3 $n4 color "green"
 
@@ -36,10 +34,10 @@ $ns lossmodel $err $n3 $n4
 $err set rate_ 0.1
 
 proc finish {} {
-global naf ns trf
-close $naf
-close $trf
-exit 0
+	global naf ns trf
+	close $naf
+	close $trf
+	exit 0
 }
 
 $ns at 0.1 "$cbr1 start"

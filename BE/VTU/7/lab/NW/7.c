@@ -28,9 +28,12 @@ void main()
 	scanf("%s",t);
 	printf("\n Generating polynomial is: %s",g);
 	a=strlen(t);
+
 	for(e=a;e<a+N-1;e++)t[e]='0';
 		printf("\n Modified t[u] is : %s",t);
+	
 	crc();
+	
 	printf("\n Checksum is: %s",cs);
 	for(e=a;e<a+N-1;e++)t[e]=cs[e-a];
 		printf("\n Test error dection 0(yes) 1(no)?:");

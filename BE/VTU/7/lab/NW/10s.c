@@ -16,24 +16,24 @@ int main()
 	char ch;
 	mknod(FIFO1_NAME,S_IFIFO|0666,0);
 	mknod(FIFO2_NAME,S_IFIFO|0666,0);
-	printf("\nserver online\n");
+	printf("\nServer online\n");
 	fd=open(FIFO1_NAME,O_RDONLY);
-	printf("\n client online \n waiting for the request \n");
+	printf("\nClient online. \n Waiting for the request \n");
 	while(1)
 	{
 		if((num=read(fd,p,3000))==-1)
-			perror("read error!!!\n");
+			perror("Read error!!!\n");
 		else
 		{
 			p[num]='\0';
 			if((f1=open(p,O_RDONLY))<0)
 			{
-				printf("\n server:%s not found...\n",p);
+				printf("\nServer:%s not found...\n",p);
 				exit(1);
 			}
 			else
 			{
-				printf("\n server:%s found \n transfering contents\n",p);
+				printf("\nServer:%s found \n transfering contents...\n",p);
 				stdin=fdopen(f1,"r");
 				i=0;
 				while(1)
@@ -46,9 +46,9 @@ int main()
 				}
 				fd2=open(FIFO2_NAME,O_WRONLY);
 				if(num2=write(fd2,c,strlen(c))==-1)
-					perror("\n transfer error\n");
+					perror("\nTransfer error !\n");
 				else
-					printf("\n server:transfer completed\n");
+					printf("\nServer : Transfer completed\n");
 				exit(1);
 			}
 		}

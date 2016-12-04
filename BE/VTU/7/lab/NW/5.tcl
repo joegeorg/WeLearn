@@ -18,17 +18,15 @@ set tcp0 [new Agent/TCP]
 $ns attach-agent $n0 $tcp0
 set ftp0 [new Application/FTP]
 $ftp0 attach-agent $tcp0
-
 set sink5 [new Agent/TCPSink]
 $ns attach-agent $n5 $sink5
-$ns connect $tcp0 $sink5
 set tcp2 [new Agent/TCP]
 $ns attach-agent $n2 $tcp2
 set ftp2 [new Application/FTP]
 $ftp2 attach-agent $tcp2
-
 set sink3 [new Agent/TCPSink]
 $ns attach-agent $n3 $sink3
+$ns connect $tcp0 $sink5
 $ns connect $tcp2 $sink3
 
 $ftp2 set packetSize_ 600
