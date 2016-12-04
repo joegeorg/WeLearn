@@ -23,10 +23,12 @@ $cbr0 attach-agent $udp0
 
 set null0 [new Agent/Null]
 $ns attach-agent $n2 $null0
+
 $udp0 set class_ 1
-$ns connect $udp0 $null0
 $cbr0 set packetSize_ 500
 $cbr0 set interval_ 0.01
+
+$ns connect $udp0 $null0
 
 proc finish { } {
 	global ns namf trf
