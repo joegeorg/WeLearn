@@ -13,12 +13,14 @@ set n5 [$ns node]
 
 $ns make-lan "$n0 $n1 $n2 $n3 $n4" 100Mb 100ms LL Queue/DropTail Mac/802_3
 $ns duplex-link $n4 $n5 1Mb 1ms DropTail
+
 set tcp0 [new Agent/TCP]
 $ns attach-agent $n0 $tcp0
 set ftp0 [new Application/FTP]
 $ftp0 attach-agent $tcp0
 $ftp0 set packetSize_ 500
 $ftp0 set interval_ 0.0001
+
 set sink5 [new Agent/TCPSink]
 $ns attach-agent $n5 $sink5
 $ns connect $tcp0 $sink5
@@ -28,6 +30,7 @@ set ftp2 [new Application/FTP]
 $ftp2 attach-agent $tcp2
 $ftp2 set packetSize_ 600
 $ftp2 set interval_ 0.001
+
 set sink3 [new Agent/TCPSink]
 $ns attach-agent $n3 $sink3
 $ns connect $tcp2 $sink3
