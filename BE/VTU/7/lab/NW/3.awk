@@ -1,7 +1,6 @@
 BEGIN{	
 }{
-event = $1;
-if(event == "d"){
+if($1 == "d"){
 count++;
 }
 }
