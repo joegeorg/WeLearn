@@ -20,21 +20,26 @@ $ns node-config -adhocRouting DSDV \
 -routerTrace ON
 
 create-god 3
+
 set n0 [$ns node]
 set n1 [$ns node]
 set n2 [$ns node]
+
 $n0 label "tcp0"
 $n1 label "sink1/tcp1"
 $n2 label "sink2"
+
 $n0 set X_ 50
 $n0 set Y_ 50
 $n0 set Z_ 0
 $n0 set X_ 100
 $n0 set Y_ 100
 $n0 set Z_ 0
+
 $ns at 0.1 "$n0 setdest 50 50 15"
 $ns at 0.1 "$n1 setdest 100 100 25"
 $ns at 0.1 "$n2 setdest 600 600 25"
+
 set tcp0 [new Agent/TCP]
 $ns attach-agent $n0 $tcp0
 set ftp0 [new Application/FTP]
@@ -62,5 +67,6 @@ proc finish {} {
 	close $naf
 	exit 0
 }
+
 $ns at 250 "finish"
 $ns run

@@ -77,5 +77,7 @@ $ns at 1.3 "$p4 send"
 $ns at 1.4 "$p1 send"
 $ns at 0.6 "$p4 send"
 $ns at 1.5 "$p6 send"
+
 $ns at 2.0 "finish"
+
 $ns run
