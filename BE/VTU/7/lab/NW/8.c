@@ -20,13 +20,12 @@ int main()
 	scanf("%d",&n);
 	printf("Enter the adjacency matrix:\n");
 	for(i=1;i<=n;i++)
-	{
 		for(j=1;j<=n;j++)
 		{
 			scanf("%d",&a[i][j]);
 			p[i][j]=0;
 		}
-	}
+
 	for(k=1;k<=n;k++)
 		for(i=1;i<=n;i++)
 			for(j=1;j<=n;j++)
@@ -37,6 +36,7 @@ int main()
 					p[i][j]=k;
 				}
 			}
+
 			printf("\nShortest path between the nodes: ");
 			for (i=1;i<=n;i++)
 			{
@@ -45,18 +45,18 @@ int main()
 				for(j=1;j<=n;j++)
 					printf("%d \t %d \t %d \n",j,a[i][j],p[i][j]);
 			}
+			
 			do
 			{
 				printf("\nEnter the source and destination :\n");
 				scanf("%d %d",&i,&j);
-				printf("Weight is %d", a[i][j]);
-				printf("\nPath is");
-				printf("\n%d -->",i);
+				printf("Weight is %d and Path is \n%d -->", a[i][j], i);
+				
 				path (i,j);
 				printf("%d",j);
-				printf("\nTo repeat ,press 1\n");
+				printf("\nTo repeat ,Press 1\n");
 				scanf("%d",&ch);
-			}
-			while(ch==1);
+			}while(ch==1);
+			
 			return 0;
 }
