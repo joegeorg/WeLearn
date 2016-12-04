@@ -18,8 +18,6 @@ set tcp0 [new Agent/TCP]
 $ns attach-agent $n0 $tcp0
 set ftp0 [new Application/FTP]
 $ftp0 attach-agent $tcp0
-$ftp0 set packetSize_ 500
-$ftp0 set interval_ 0.0001
 
 set sink5 [new Agent/TCPSink]
 $ns attach-agent $n5 $sink5
@@ -28,12 +26,16 @@ set tcp2 [new Agent/TCP]
 $ns attach-agent $n2 $tcp2
 set ftp2 [new Application/FTP]
 $ftp2 attach-agent $tcp2
-$ftp2 set packetSize_ 600
-$ftp2 set interval_ 0.001
 
 set sink3 [new Agent/TCPSink]
 $ns attach-agent $n3 $sink3
 $ns connect $tcp2 $sink3
+
+$ftp2 set packetSize_ 600
+$ftp2 set interval_ 0.001
+$ftp0 set packetSize_ 500
+$ftp0 set interval_ 0.0001
+
 set f1 [open f1.tr w]
 $tcp0 attach $f1
 $tcp0 trace cwnd_
