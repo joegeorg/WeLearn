@@ -1,7 +1,7 @@
 set ns [new Simulator]
-set trf [open 7.tr w]
+set trf [open 1.tr w]
 $ns trace-all $trf
-set namf [open 7.nam w]
+set namf [open 1.nam w]
 $ns namtrace-all $namf
 
 set n0 [$ns node]
@@ -31,7 +31,7 @@ $cbr0 set interval_ 0.01
 proc finish { } {
 	global ns namf trf
 	$ns flush-trace
-	exec nam 7.nam &
+	exec nam 1.nam &
 	close $trf
 	close $namf
 	exit 0
