@@ -1,5 +1,5 @@
 <?php
-    $db = mysql_connect("localhost", "root", "root123");
+    $db = mysql_connect("localhost", "username", "password");
     mysql_select_db("test");
 
     $name = $_POST['name'];

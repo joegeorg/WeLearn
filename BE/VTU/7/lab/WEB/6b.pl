@@ -13,4 +13,3 @@ print FILE "$count";
 close(FILE);
 
 print "View count : $count";
-

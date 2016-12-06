@@ -15,14 +15,14 @@ use CGI':standard';
 print "content-type:text/html\n\n";
 
 use DBI;
-$dbh = DBI->connect("DBI:mysql:test","root","root123");
+$dbh = DBI->connect("DBI:mysql:test","username","password");
 $name=param("name");
 $age=param("age");
-$sql="insert into Students values('$name','$age')";
+$sql="INSERT INTO Students VALUES('$name','$age')";
 $sth=$dbh->prepare($sql);
 $sth->execute;
 
-$sql = "select * from Students";
+$sql = "SELECT * FROM Students";
 $sth = $dbh->prepare($sql);
 $sth->execute;
 print "<table border size=1>
