@@ -34,11 +34,11 @@ print "<table border size=1>
 
 while(($name,$age)=$sth->fetchrow())
 {
-print "<tr>
-<td>$name</td>
-<td>$age</td>
-</tr>
-";
+	print "<tr>
+	<td>$name</td>
+	<td>$age</td>
+	</tr>
+	";
 }
 
 $sth->finish();
